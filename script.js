@@ -81,7 +81,8 @@ console.log(result)
 class Stack{
   constructor(){
     this.data = []
-    this.top = undefined
+    this.top = 0
+   
   }
 
   push(el){
@@ -94,18 +95,22 @@ class Stack{
   }
 
   pop(){
-     return this.data.shift()
+     if(this.isEmpty()){
+      return null
+     }
+    
+     return this.data && this.data.splice(-1)[0]
   }
 
   peek(){
-    return this.top
+    return this.data[0]
   }
 
   print(){
     return this.data
   }
 
-   isEmpty(){
+  isEmpty(){
       if(this.data !== 0){
         return false
       }
@@ -113,3 +118,12 @@ class Stack{
       return true
   }
 }
+
+let info = new Stack
+
+info.push(1)
+console.log(info)
+info.push(2)
+console.log(info)
+info.pop()
+console.log(info)

@@ -91,15 +91,18 @@ class Stack{
   }
 
   length() {
-    return this.data.size()
+    return this.top
   }
 
   pop(){
      if(this.isEmpty()){
-      return null
+      return true
      }
-    
-     return this.data && this.data.splice(-1)[0]
+
+     let last = this.data[this.top-1];  // Store last item in array
+     this.data && this.data.splice(-1)[0]
+     this.top = this.top-1
+     return last; // Return last item
   }
 
   peek(){
@@ -111,11 +114,10 @@ class Stack{
   }
 
   isEmpty(){
-      if(this.data !== 0){
-        return false
-      }
-
-      return true
+      
+        return this.top === 0 ? true : false
+  
+      
   }
 }
 
@@ -124,6 +126,8 @@ let info = new Stack
 info.push(1)
 console.log(info)
 info.push(2)
+console.log(info)
+info.pop()
 console.log(info)
 info.pop()
 console.log(info)
